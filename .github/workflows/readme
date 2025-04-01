@@ -1,0 +1,14 @@
+Explanation of Workflow:
+ * on: Defines when the workflow runs (on push or pull request to main).
+ * jobs: Defines the jobs in the workflow.
+   * build:
+     * runs-on: ubuntu-latest: Runs the job on an Ubuntu virtual machine.
+     * steps: Defines the steps in the job.
+       * Checkout code: Checks out the code from the repository.
+       * Install GCC: Installs the GCC compiler.
+       * Build: Runs make to build the program.
+       * Run: Executes the compiled program.
+   * deploy-staging:
+     * needs: build: Ensures the build job completes successfully before running.
+     * environment: {name: staging}: defines the environment as staging.
+     * Simulate deployment: Simulates a deployment to a staging environment.
